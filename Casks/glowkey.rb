@@ -1,6 +1,6 @@
 cask "glowkey" do
-  version "0.1.2"
-  sha256 "1dd0f2670fd6413e63e138d5de329180ff0a123863f9495cccbec3cc12582f56"
+  version "0.1.3"
+  sha256 "105ba97aa34494611909bc2e27066c79b801ff43959c0a2428f82bde49136ddd"
 
   url "https://github.com/aishuo07/GlowKey/releases/download/v#{version}/GlowKey-v#{version}-macos.zip"
   name "GlowKey"
