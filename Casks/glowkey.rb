@@ -1,6 +1,6 @@
 cask "glowkey" do
-  version "0.1.1"
-  sha256 "ab92bb422c1df7febe17c60be0eb4254d3a7b07c9ccdf6b8bf273e6117e3d95e"
+  version "0.1.2"
+  sha256 "1dd0f2670fd6413e63e138d5de329180ff0a123863f9495cccbec3cc12582f56"
 
   url "https://github.com/aishuo07/GlowKey/releases/download/v#{version}/GlowKey-v#{version}-macos.zip"
   name "GlowKey"
@@ -8,6 +8,14 @@ cask "glowkey" do
   homepage "https://github.com/aishuo07/GlowKey"
 
   app "GlowKey-v#{version}/GlowKey.app"
+
+  caveats <<~EOS
+    GlowKey is currently unsigned. Install with:
+
+      brew install --cask --no-quarantine glowkey
+
+    Without --no-quarantine, macOS may show a misleading "damaged" warning.
+  EOS
 
   uninstall launchctl: [
               "fyi.glowkey.daemon",
