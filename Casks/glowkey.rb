@@ -9,12 +9,21 @@ cask "glowkey" do
 
   app "GlowKey-v#{version}/GlowKey.app"
 
+  postflight do
+    system_command "/bin/sh",
+                   args: [
+                     "-c",
+                     "find /Applications/GlowKey.app -exec xattr -d com.apple.quarantine {} \\; 2>/dev/null || true",
+                   ]
+  end
+
   caveats <<~EOS
-    GlowKey is currently unsigned. Install with:
+    GlowKey is currently unsigned. This cask clears Homebrew quarantine after install
+    to avoid macOS showing a misleading "damaged" warning.
 
-      brew install --cask --no-quarantine glowkey
+    If macOS still blocks launch, run:
 
-    Without --no-quarantine, macOS may show a misleading "damaged" warning.
+      find /Applications/GlowKey.app -exec xattr -d com.apple.quarantine {} \\; 2>/dev/null || true
   EOS
 
   uninstall launchctl: [
